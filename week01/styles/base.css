@@ -1,0 +1,116 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Calibri, 'Ubuntu', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: #004080;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header span#course-title {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    background-color: #ffcc00;
+    /* Highlighted background */
+    color: #004080;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Navigation styling */
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.5rem;
+    margin-top: 24px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #ffcc00;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 0.2rem;
+}
+
+/* Main layout */
+main {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+main h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #004080;
+}
+
+/* Grid layout for About Me and Interests */
+.content-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Card styling */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    color: #004080;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+/* Footer styling */
+footer {
+    background-color: #004080;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0.3rem 0;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+}

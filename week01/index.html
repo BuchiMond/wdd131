@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 131 - Dynamic Web Fundamentals - Buchi Diamond Vitalis</title>
+    <meta name="description"
+        content="WDD 131 - Dynamic Web Fundamentals - Buchi Diamond Vitalis - Telling about myself.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/base.css">
+    <script src="scripts/getdates.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <span id="course-title">WDD 131 – Dynamic Web Fundamentals</span>
+        <nav>
+            <a href="https://www.linkedin.com/in/smardein/">Linkedin</a>
+            <a href="https://byupw.instructure.com/">Canvas</a>
+            <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/6?lang=eng">Scripture</a>
+            <a href="#">Final Project</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Buchi Diamond Vitalis</h1>
+
+        <div class="content-layout">
+            <section class="card">
+                <h2>About Me</h2>
+                <img src="images/profile.png" alt="My profile picture">
+                <p>Hello! My name is Buchi Diamond Vitalis, and I am deeply passionate about technology, design, and
+                    problem-solving.
+                    Over the years, I have built strong skills in areas such as web design, graphic design, content
+                    creation, and IT support. <br><br>I enjoy taking on challenges that require creative and analytical
+                    thinking,
+                    because they push me to grow and deliver excellent results. My goal is always to create
+                    solutions
+                    that
+                    are not only functional but also visually appealing and user-friendly.
+            </section>
+
+            <aside class="card">
+                <h2>My Interests</h2>
+                <img src="images/interests.jpg" alt="My interests image">
+                <p>I enjoy working with web technologies, creating engaging designs, and constantly learning new skills
+                    to improve my craft. Every project I take on is an opportunity to challenge myself, explore
+                    innovative
+                    ideas, and deliver results that truly make an impact. <br><br>I find great satisfaction in blending
+                    creativity
+                    with technical knowledge, and I am always motivated to grow, adapt, and keep up with the
+                    fast-changing
+                    world of technology and design.
+                </p>
+            </aside>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Buchi Diamond Vitalis, Imo State, Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        // Dynamically set the current year
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+
+        // Dynamically set the last modified date
+        document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    </script>
+</body>
+
+</html>
