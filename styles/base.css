@@ -114,3 +114,40 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/* External links section */
+.external-links {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.external-links h2 {
+    color: #004080;
+    margin-bottom: 1rem;
+}
+
+.external-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.external-links li {
+    margin: 0.5rem 0;
+}
+
+.external-links a {
+    color: #004080;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.external-links a:hover {
+    color: #ff6600;
+}
