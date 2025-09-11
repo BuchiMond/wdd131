@@ -1,0 +1,30 @@
+/* temples-large.css */
+/* Larger screens (min-width: 600px) */
+
+@media screen and (min-width: 600px) {
+
+    /* Hide hamburger button */
+    #hamburger {
+        display: none;
+    }
+
+    /* Show nav horizontally */
+    nav ul {
+        display: flex !important;
+        flex-direction: row;
+        gap: 1rem;
+        margin: 0;
+        background: none;
+        /* remove background since inline with header */
+    }
+
+    nav {
+        margin-left: auto;
+        /* keep nav on right side */
+    }
+
+    /* Gallery multi-column layout */
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}

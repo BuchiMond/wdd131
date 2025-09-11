@@ -1,0 +1,120 @@
+/* temples.css */
+/* Mobile-first design */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    background-color: #f9f9f9;
+}
+
+/* Header Layout */
+header {
+    background-color: #004080;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* h2 left, hamburger/nav right */
+}
+
+header h2 {
+    margin: 0;
+}
+
+/* Hamburger button */
+#hamburger {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    /* visible on mobile */
+    margin-left: auto;
+}
+
+/* Navigation */
+nav ul {
+    display: none;
+    /* hidden by default on mobile */
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    background-color: #004080;
+    text-align: right;
+    list-style: none;
+}
+
+nav ul.show {
+    display: flex;
+    /* shown when toggled */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #0066cc;
+}
+
+/* Main content */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Gallery layout */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* single column for mobile */
+    gap: 1rem;
+}
+
+figure {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}

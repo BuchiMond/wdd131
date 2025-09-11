@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 131 - Picture Album - Buchi Diamond Vitalis</title>
+    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals - Buchi Diamond Vitalis - Picture Album.">
+    <meta name="author" content="Buchi Diamond Vitalis">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/temples.css">
+    <link rel="stylesheet" href="styles/temples-large.css">
+    <script src="scripts/temples.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h2>Temple Album</h2>
+        <button id="hamburger" aria-label="Menu">&#9776;</button> <!-- hamburger icon -->
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#old">Old</a></li>
+                <li><a href="#new">New</a></li>
+                <li><a href="#large">Large</a></li>
+                <li><a href="#small">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>My Temple Collection</h1>
+
+        <section class="gallery">
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/temple.jpg" alt="Temple">
+                <figcaption>Temple</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Buchi Diamond Vitalis, Imo State, Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        // Dynamically set the current year
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+
+        // Dynamically set the last modified date
+        document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    </script>
+</body>
+
+</html>
