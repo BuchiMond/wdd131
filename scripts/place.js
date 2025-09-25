@@ -9,20 +9,18 @@ const windSpeed = 5; // km/h
 
 // Wind chill calculation (Celsius version)
 function calculateWindChill(tempC, speedKmh) {
-    // Formula only applies if temp <= 10°C and windspeed > 4.8 km/h
-    if (tempC <= 10 && speedKmh > 4.8) {
-        return (
-            13.12 +
-            0.6215 * tempC -
-            11.37 * Math.pow(speedKmh, 0.16) +
-            0.3965 * tempC * Math.pow(speedKmh, 0.16)
-        ).toFixed(1);
-    } else {
-        return "N/A (not applicable)";
-    }
+    return (
+        13.12 +
+        0.6215 * tempC -
+        11.37 * Math.pow(speedKmh, 0.16) +
+        0.3965 * tempC * Math.pow(speedKmh, 0.16)
+    ).toFixed(1);
 }
 
-// Display wind chill
+// Display wind chill only if conditions are valid
 const windChillElement = document.getElementById("windchill");
-windChillElement.textContent =
-    "Wind Chill: " + calculateWindChill(temperature, windSpeed) + " °C";
+if (temperature <= 10 && windSpeed > 4.8) {
+    windChillElement.textContent = "Wind Chill: " + calculateWindChill(temperature, windSpeed) + " °C";
+} else {
+    windChillElement.textContent = "Wind Chill: N/A (not applicable)";
+}
