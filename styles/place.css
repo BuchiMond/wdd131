@@ -1,0 +1,133 @@
+/* Global Variables */
+:root {
+    --brand-green: #006400;
+    --light-green: #e6f4ea;
+    --text-color: #222;
+    --max-width: 1200px;
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: var(--brand-green);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Hero image (mobile only) */
+.hero-mobile img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Layout */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.primary,
+.sidebar {
+    background: var(--light-green);
+    display: inline-block;
+    /* shrink to fit content */
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 100%;
+    /* keep it safe on mobile */
+    box-sizing: border-box;
+}
+
+/* Weather heading with icon (mobile) */
+.weather-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand-green);
+}
+
+.weather-heading img.weather-svg {
+    width: 20px;
+    /* fixed small size */
+    height: 20px;
+}
+
+/* Footer */
+footer {
+    background: var(--brand-green);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Large screens */
+@media (min-width: 800px) {
+    body {
+        background: none;
+    }
+
+    .hero-mobile {
+        display: none;
+        /* hide hero picture in large view */
+    }
+
+    .layout {
+        grid-template-columns: 2fr 1fr;
+        position: relative;
+        background: url("../images/hero-large.webp") no-repeat center center / cover;
+        border-radius: 0;
+        color: #000;
+        min-height: 80vh;
+    }
+
+    .primary {
+        align-self: start;
+        background: rgba(230, 244, 234, 0.85);
+    }
+
+    .sidebar {
+        align-self: end;
+        background: rgba(230, 244, 234, 0.85);
+    }
+
+    /* Hide inline weather icon, use pseudo-element */
+    .weather-heading img.weather-svg {
+        display: none;
+    }
+
+    .weather-heading::after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        /* fixed size */
+        height: 40px;
+        margin-left: 0.1rem;
+        background: url("../images/weather.svg") no-repeat center center / contain;
+        vertical-align: middle;
+    }
+}

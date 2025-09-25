@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buchi Diamond Vitalis | WDD 131</title>
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Nigeria</h1>
+    </header>
+
+    <!-- Hero image: visible on mobile; becomes background on large screens -->
+    <picture class="hero-mobile">
+        <source srcset="images/hero-large.webp" media="(min-width: 1000px)">
+        <source srcset="images/hero-medium.webp" media="(min-width: 500px)">
+        <img src="images/hero-small.webp" alt="Nigeria scenery" width="1500" height="750">
+    </picture>
+
+    <main class="layout">
+        <!-- Main column -->
+        <section class="primary" aria-labelledby="data-heading">
+            <h2 id="data-heading">DATA</h2>
+            <ul class="data-list">
+                <li><strong>Area:</strong> 923,769 sq km</li>
+                <li><strong>Population:</strong> ~227,548,000 (2025 estimate)</li>
+                <li><strong>Capital:</strong> Abuja</li>
+                <li><strong>Languages:</strong> English</li>
+                <li><strong>Currency:</strong> Nigerian Naira (₦)</li>
+                <li><strong>Time Zone:</strong> UTC+1</li>
+                <li><strong>Calling Code:</strong> +234</li>
+                <li><strong>Internet TLD:</strong> .ng</li>
+            </ul>
+        </section>
+
+        <!-- Aside column -->
+        <aside class="sidebar" aria-labelledby="weather-heading">
+            <h2 id="weather-heading" class="weather-heading">
+                <img class="weather-svg" src="images/weather.svg" alt="Weather icon">
+                WEATHER
+            </h2>
+            <div class="weather-info">
+                <p><strong>Temperature:</strong> ~25 °C</p>
+                <p><strong>Conditions:</strong> Hazy / Partly Cloudy</p>
+                <p><strong>Wind:</strong> ~5 km/h (West)</p>
+                <p><strong>Feels Like:</strong> ~28–30 °C</p>
+                <p id="windchill" aria-live="polite"></p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Buchi Diamond Vitalis, Imo State, Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+
+</html>
