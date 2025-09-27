@@ -1,0 +1,36 @@
+@media (min-width: 600px) {
+    header nav {
+        margin-left: auto;
+    }
+
+    /* Hide hamburger on larger screens; show horizontal nav */
+    #hamburger {
+        display: none;
+    }
+
+    header {
+        position: relative;
+    }
+
+    header nav ul {
+        position: static;
+        display: flex !important;
+        flex-direction: row;
+        background: transparent;
+        box-shadow: none;
+        gap: 0.5rem;
+        padding: 0;
+        margin-left: auto;
+    }
+
+    /* Gallery: responsive columns */
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+    }
+
+    /* Slightly taller uniform images on larger screens */
+    .temple-card__img {
+        height: 220px;
+    }
+}
