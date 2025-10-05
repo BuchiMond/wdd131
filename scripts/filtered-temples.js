@@ -78,6 +78,30 @@ const temples = [
         imageUrl:
             "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/mexico-city-mexico/400x250/mexico-city-temple-exterior-1518361-wallpaper.jpg",
     },
+    {
+        templeName: "Antofagasta Chile",
+        location: "Antofagasta Chile",
+        dedicated: "2025, june, 15",
+        area: 26163,
+        imageUrl:
+            "https://churchofjesuschristtemples.org/assets/img/temples/antofagasta-chile-temple/antofagasta-chile-temple-60193.jpg",
+    },
+    {
+        templeName: "Arequipa Peru",
+        location: "Arequipa Peru",
+        dedicated: "2019, December, 15",
+        area: 26969,
+        imageUrl:
+            "https://churchofjesuschristtemples.org/assets/img/temples/arequipa-peru-temple/arequipa-peru-temple-7277.jpg",
+    },
+    {
+        templeName: "Houston Texas",
+        location: "Houston Texas",
+        dedicated: "2000, August, 26",
+        area: 33970,
+        imageUrl:
+            "https://churchofjesuschristtemples.org/assets/img/temples/houston-texas-temple/houston-texas-temple-23478.jpg",
+    },
 ];
 
 // --------------- Elements ---------------
