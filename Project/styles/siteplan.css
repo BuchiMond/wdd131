@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #E6CB96;
+    color: #53381D;
+    line-height: 1.6;
+    padding: 0;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 1rem 1rem;
+    background-color: #FFCC00;
+    color: #53381D;
+}
+
+.branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 70px;
+    height: auto;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* Hero Image */
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sections */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+    background: #fff8e1;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(83, 56, 29, 0.2);
+}
+
+h2 {
+    color: #53381D;
+    border-bottom: 2px solid #FFCC00;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Colour Boxes */
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.color1 {
+    background-color: #53381D;
+}
+
+.color2 {
+    background-color: #FFCC00;
+}
+
+.color3 {
+    background-color: #E6CB96;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #53381D;
+    color: #E6CB96;
+}
+
+footer a {
+    color: #FFCC00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .branding {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .logo {
+        margin-right: 20px;
+    }
+
+    .tagline {
+        font-size: 1.4rem;
+    }
+
+    section {
+        padding: 2rem;
+    }
+}
