@@ -1,0 +1,169 @@
+/* ---------- General Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fffdf8;
+    color: #53381D;
+    line-height: 1.6;
+    padding: 0;
+}
+
+/* ---------- Header ---------- */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #53381D;
+    background-color: #FFCC00;
+    margin: 0;
+    display: block;
+    padding: 30px 30px;
+}
+
+/* ---------- Form ---------- */
+form {
+    background-color: #fff8e5;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #53381D;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c7a96d;
+    border-radius: 6px;
+    background-color: #fffef8;
+    color: #53381D;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+select:focus,
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #FFCC00;
+    outline: none;
+}
+
+/* ---------- Rating (Horizontal Radio Buttons) ---------- */
+.rating-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.rating-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1rem;
+}
+
+.rating-group input[type="radio"] {
+    transform: scale(1.2);
+    accent-color: #FFCC00;
+}
+
+/* ---------- Checkboxes (Vertical) ---------- */
+.vert {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+    font-size: 1rem;
+}
+
+.vert input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #FFCC00;
+}
+
+/* ---------- Button ---------- */
+input[type="submit"] {
+    background-color: #53381D;
+    color: #FFCC00;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #402c15;
+    transform: scale(1.02);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #53381D;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.gap {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+/* ---------- Submission Page ---------- */
+.submission {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+        padding: 8px 16px;
+    }
+
+    .rating-group {
+        gap: 10px;
+    }
+
+    input[type="button"] {
+        font-size: 0.95rem;
+    }
+}

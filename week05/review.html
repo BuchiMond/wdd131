@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Form</title>
+    <meta name="author" content="Buchi Diamond Vitalis">
+    <meta name="description" content="Product Review Form">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Product Review Form</h1>
+        </div>
+
+    </header>
+
+    <main>
+        <p class="submission">Your Form Has Been Submitted Successfully!</p>
+
+        <p id="reviewCount"></p>
+
+        <a href="form.html">Submit Another Review</a>
+
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Buchi Diamond Vitalis, Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+        document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    </script>
+</body>
+
+</html>

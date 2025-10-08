@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Form</title>
+    <meta name="author" content="Buchi Diamond Vitalis">
+    <meta name="description" content="Product Review Form">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Product Review Form</h1>
+        </div>
+
+    </header>
+
+    <main>
+        <form method="get" action="review.html">
+            <label>Product Name
+                <select name="product" id="productSelect" required>
+                    <option value="">Select a Product...</option>
+                </select>
+            </label>
+
+            <div class="gap">Overall Rating</div>
+            <div class="rating-group">
+                <label class="vert"><input type="radio" name="rating">★</label>
+                <label class="vert"><input type="radio" name="rating">★★</label>
+                <label class="vert"><input type="radio" name="rating">★★★</label>
+                <label class="vert"><input type="radio" name="rating">★★★★</label>
+                <label class="vert"><input type="radio" name="rating">★★★★★</label>
+            </div>
+
+            <div class="gap">Date of Installation</div>
+            <input type="date" name="completeDate">
+
+            <div class="gap">Which feature did you find useful in the product?<br>(Check all that applies)</div>
+            <label class="vert"><input type="checkbox" name="durability">Durability</label>
+            <label class="vert"><input type="checkbox" name="ease-of-use">Ease of Use</label>
+            <label class="vert"><input type="checkbox" name="performance">Performance</label>
+            <label class="vert"><input type="checkbox" name="design">Design</label>
+
+            <div class="gap">Written Review (Optional)</div>
+            <textarea name="written-review" rows="4" cols="40"></textarea>
+
+            <div class="gap">Your Name (Optional)</div>
+            <input type="text" name="fullname">
+
+            <input type="submit" value="Post Review">
+
+        </form>
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="currentyear"></span> Buchi Diamond Vitalis, Nigeria
+        </p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+        document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    </script>
+</body>
+
+</html>
