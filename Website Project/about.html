@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BigBrandCity — About</title>
+  <meta name="author" content="Buchi Diamond Vitalis" />
+  <meta name="description" content="About BigBrandCity — mission, team and story." />
+
+  <link rel="stylesheet" href="styles/bigbrandcity.css" />
+  <script src="scripts/bigbrandcity.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="BigBrandCity home">
+        <img class="logo lazy" data-src="images/logo.webp" alt="BigBrandCity Logo" loading="lazy">
+        <span class="brand-title">BigBrandCity</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList">☰</button>
+        <ul id="navList" class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container multi-layout">
+    <section class="about-hero two-col">
+      <div>
+        <h1>We design brands with purpose</h1>
+        <p>BigBrandCity started as a one-person studio and now supports local businesses with identity, web and
+          marketing design that works.</p>
+        <p>We work with cafés, clinics, tutors and startups to create clear visual identities and websites that convert
+          visitors into customers.</p>
+      </div>
+      <div>
+        <img class="lazy" data-src="images/team-photo.webp" alt="BigBrandCity team" loading="lazy">
+      </div>
+    </section>
+
+    <section class="story two-col">
+      <div>
+        <h2>Our story</h2>
+        <p>Founded by Buchi Vitalis, BigBrandCity grew out of a desire to help small businesses look professional
+          without large budgets. We focus on measurable results and clear communication.</p>
+      </div>
+
+      <div>
+        <h2>Meet the team</h2>
+        <div id="teamList" class="team-grid"></div>
+      </div>
+    </section>
+
+    <section class="fun-fact two-col">
+      <div>
+        <h2>Mission & vision</h2>
+        <p>Mission: create thoughtful brands for local businesses. Vision: a marketplace where small brands look as
+          confident as national players.</p>
+      </div>
+      <div>
+        <h2>Fun fact</h2>
+        <p id="funFactText">Press the button to reveal a fun fact.</p>
+        <button id="revealFact" class="btn alt">Reveal fact</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="currentYearFooter"></span> Buchi Diamond Vitalis, Nigeria</p>
+      <p><a id="sitePlanLinkFooter" href="siteplan.html">Site Plan</a></p>
+      <p id="lastModifiedFooter"></p>
+    </div>
+  </footer>
+</body>
+
+</html>

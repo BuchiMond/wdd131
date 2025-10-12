@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BigBrandCity — Home</title>
+  <meta name="author" content="Buchi Diamond Vitalis" />
+  <meta name="description" content="BigBrandCity — creative brand identity, websites and strategy." />
+
+  <link rel="stylesheet" href="styles/bigbrandcity.css" />
+  <script src="scripts/bigbrandcity.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="BigBrandCity home">
+        <img class="logo lazy" data-src="images/logo.webp" alt="BigBrandCity Logo" loading="lazy">
+        <span class="brand-title">BigBrandCity</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList">☰</button>
+        <ul id="navList" class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container multi-layout">
+    <!-- Two-column hero: image left, CTA right -->
+    <section class="hero two-col">
+      <div class="hero-media">
+        <img class="lazy hero-img" data-src="images/hero.webp" alt="Creative workspace and brand sketches"
+          loading="lazy">
+      </div>
+
+      <div class="hero-content">
+        <h1>We build brands that get noticed</h1>
+        <p>At BigBrandCity we combine clear strategy, memorable design and fast websites to help local businesses grow.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="contact.html">Let's build your brand</a>
+          <a class="btn alt" href="services.html">View services</a>
+        </div>
+
+        <div class="feature-stats">
+          <div><strong>+120</strong><span>Brands launched</span></div>
+          <div><strong>98%</strong><span>Client satisfaction</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features: two-column or grid -->
+    <section class="features two-col">
+      <div>
+        <h2>Core services</h2>
+        <p>We focus on brand identity, websites and practical marketing that helps customers find you.</p>
+      </div>
+      <div id="features" class="features-grid" aria-live="polite">
+        <!-- JS will render feature cards -->
+      </div>
+    </section>
+
+    <!-- Testimonials + Recent projects columns -->
+    <section class="split two-col">
+      <div>
+        <h2>What clients say</h2>
+        <div id="testimonials" class="testimonials-slider"></div>
+      </div>
+
+      <div>
+        <h2>Recent projects</h2>
+        <div class="samples-grid">
+          <img class="lazy sample" data-src="images/project-branding.webp" alt="Branding for The Green Cafe"
+            loading="lazy">
+          <img class="lazy sample" data-src="images/project-website.webp" alt="Website for Apex Tutors" loading="lazy">
+          <img class="lazy sample" data-src="images/project-brochure.webp" alt="Brochure for Heron Clinic"
+            loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="currentYear"></span> Buchi Diamond Vitalis, Nigeria</p>
+      <p><a id="sitePlanLink" href="siteplan.html">Site Plan</a></p>
+      <p id="lastModified"></p>
+    </div>
+  </footer>
+</body>
+
+</html>

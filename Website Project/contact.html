@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — BigBrandCity</title>
+    <meta name="author" content="Buchi Diamond Vitalis" />
+    <meta name="description" content="Contact BigBrandCity — send a message or request a quote." />
+
+    <link rel="stylesheet" href="styles/bigbrandcity.css" />
+    <script src="scripts/bigbrandcity.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="BigBrandCity home">
+                <img class="logo lazy" data-src="images/logo.webp" alt="BigBrandCity Logo" loading="lazy">
+                <span class="brand-title">BigBrandCity</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList">☰</button>
+                <ul id="navList" class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container multi-layout">
+        <section class="contact-section two-col">
+            <div>
+                <h1>Contact us</h1>
+                <p>Send a message and we’ll respond within 48 hours. Submissions are saved locally in your browser.</p>
+
+                <form id="contactForm" novalidate>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required minlength="2">
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Send message</button>
+                        <button type="button" id="clearLocal" class="btn alt">Clear local data</button>
+                    </div>
+
+                    <p id="formStatus" class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div>
+                <h2>Previous submissions (local)</h2>
+                <div id="submissionsList"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="currentYearContact"></span> Buchi Diamond Vitalis, Nigeria</p>
+            <p><a id="sitePlanLinkContact" href="siteplan.html">Site Plan</a></p>
+            <p id="lastModifiedContact"></p>
+        </div>
+    </footer>
+</body>
+
+</html>

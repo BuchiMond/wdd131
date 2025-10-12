@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BigBrandCity — Services</title>
+  <meta name="author" content="Buchi Diamond Vitalis" />
+  <meta name="description" content="Services we provide at BigBrandCity." />
+
+  <link rel="stylesheet" href="styles/bigbrandcity.css" />
+  <script src="scripts/bigbrandcity.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="BigBrandCity home">
+        <img class="logo lazy" data-src="images/logo.webp" alt="BigBrandCity Logo" loading="lazy">
+        <span class="brand-title">BigBrandCity</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList">☰</button>
+        <ul id="navList" class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container multi-layout">
+    <section class="services-intro two-col">
+      <div>
+        <h1>Services that help brands grow</h1>
+        <p>Pick a focus area and explore packages tailored to startups and growing businesses.</p>
+      </div>
+
+      <div class="service-controls">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="graphics">Graphics</button>
+        <button class="filter-btn" data-filter="strategy">Strategy</button>
+      </div>
+    </section>
+
+    <section id="servicesList" class="services-grid two-col">
+      <!-- JS will fill service cards here -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="currentYearServices"></span> Buchi Diamond Vitalis, Nigeria</p>
+      <p><a id="sitePlanLinkServices" href="siteplan.html">Site Plan</a></p>
+      <p id="lastModifiedServices"></p>
+    </div>
+  </footer>
+</body>
+
+</html>
