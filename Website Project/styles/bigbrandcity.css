@@ -116,12 +116,16 @@ body {
 /* Generic two-column block */
 .two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 1rem;
   align-items: start;
 }
 
 /* Hero */
+.hero {
+  margin-top: 30px;
+}
+
 .hero-img {
   width: 100%;
   height: auto;
@@ -308,6 +312,190 @@ footer a:hover {
 
 .color3 {
   background: var(--bg);
+}
+
+.team-member img {
+  width: 100px;
+  /* adjust this number to make them smaller or larger */
+  height: 100px;
+  /* keeps the size consistent */
+  object-fit: cover;
+  /* ensures images don’t stretch */
+  border-radius: 50%;
+  /* makes them round */
+  margin-bottom: 0.75rem;
+  border: 3px solid var(--accent-color, #FFCC00);
+  /* optional: adds a clean border */
+}
+
+.about-hero.two-col {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* first column is twice the width of the second */
+  align-items: center;
+  gap: 2rem;
+  /* space between the two columns */
+  padding: 2rem 1rem;
+}
+
+.about-hero.two-col>div {
+  max-width: 100%;
+}
+
+#team-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  display: block;
+  object-fit: contain;
+  box-shadow: none;
+}
+
+/* TEAM SECTION */
+#team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#team-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: row;
+  /* places members horizontally */
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* ensures wrapping on smaller screens */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.team-grid .team-member {
+  text-align: center;
+  max-width: 250px;
+}
+
+.team-grid .team-member img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* TWO-COLUMN LAYOUT WITH UNEQUAL WIDTHS */
+.story.two-col {
+  display: grid;
+  grid-template-columns: 33% 67%;
+  /* left column = 1/3, right column = 2/3 */
+  gap: 2rem;
+  align-items: start;
+  padding: 1rem 1rem;
+}
+
+/* STORY TEXT SIDE */
+.story.two-col>div:first-child {
+  /* optional – keeps it visually distinct */
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+/* TEAM SIDE */
+.story.two-col>div:last-child {
+  padding: 1rem;
+}
+
+.about-hero {
+  margin-top: 30px;
+  padding: 20px 20px 20px 20px !important;
+}
+
+/* TEAM GRID (HORIZONTAL LAYOUT) */
+.team-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  /* forces all members in a row */
+  overflow-x: auto;
+  /* allows horizontal scrolling if too wide */
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.team-grid .team-member {
+  flex: 0 0 auto;
+  text-align: center;
+  width: 190px;
+  scroll-snap-align: start;
+}
+
+.team-grid .team-member img {
+  width: 100%;
+  height: 170px;
+  border-radius: 10rem;
+  object-fit: cover;
+}
+
+/* SERVICE FILTER BUTTONS */
+.service-controls {
+  text-align: center;
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filter-btn {
+  background-color: #FFCC00;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: #905e2c;
+  transform: scale(1.05);
+}
+
+.filter-btn:active {
+  transform: scale(0.95);
+}
+
+.filter-btn.active,
+.filter-btn:focus {
+  background-color: #53381D;
+  outline: none;
+}
+
+.contact-section {
+  margin-top: 30px;
+}
+
+
+/* Responsive fallback */
+@media (max-width: 768px) {
+  .story.two-col {
+    grid-template-columns: 1fr;
+    /* stacks vertically on mobile */
+  }
+}
+
+.services-intro {
+  margin-top: 30px;
 }
 
 /* Responsive rules */

@@ -1,32 +1,27 @@
-/* scripts/bigbrandcity.js
-   Central JS:
-   - multiple functions
-   - DOM selection & manipulation
-   - conditional branching
-   - objects, arrays, array methods
-   - template literals exclusively for building strings
-   - localStorage usage
+/* bigbrandcity.js
+   Full-feature script: menu, lazy loading, features, testimonials, team, services,
+   contact form storage, footer dates, etc.
 */
 
-// short helpers
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
+// --------- Helpers ---------
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-// NAV: remove current page from the nav, and enable toggle on mobile
-function initNav() {
-  const navList = $('#navList');
+// --------- NAV TOGGLE & Hide Current Page ---------- 
+function initNavToggleAndPrune() {
   const toggle = $('#navToggle');
+  const navList = $('#navList');
   if (!navList) return;
 
-  // remove current page's nav link (so current page is not shown)
-  const links = Array.from(navList.querySelectorAll('a'));
-  links.forEach(a => {
+  // Remove link to the current page
+  navList.querySelectorAll('a').forEach(a => {
     const href = a.getAttribute('href');
     if (href && location.pathname.endsWith(href)) {
       a.parentElement.remove();
     }
   });
 
+  // Toggle menu for mobile
   if (toggle) {
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
@@ -36,24 +31,25 @@ function initNav() {
   }
 }
 
-// Lazy load images using IntersectionObserver with fallback
+// --------- Lazy Loading Images ----------
 function initLazyLoading() {
-  const imgs = $$('img.lazy, img[data-src]');
+  const lazyImgs = $$('img.lazy');
   if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
           const src = img.dataset.src;
           if (src) img.src = src;
           img.classList.remove('lazy');
-          observer.unobserve(img);
+          obs.unobserve(img);
         }
       });
     }, { rootMargin: '100px 0px' });
-    imgs.forEach(img => obs.observe(img));
+    lazyImgs.forEach(img => observer.observe(img));
   } else {
-    imgs.forEach(img => {
+    // fallback
+    lazyImgs.forEach(img => {
       const src = img.dataset.src;
       if (src) img.src = src;
       img.classList.remove('lazy');
@@ -61,136 +57,128 @@ function initLazyLoading() {
   }
 }
 
-// Footer dates (current year and last modified)
+// --------- Footer: Year & Last Modified ----------
 function setFooterDates() {
   const yearEls = $$('#currentYear, #currentYearFooter, #currentYearServices, #currentYearContact, #currentYearSitePlan');
-  yearEls.forEach(el => { if (el) el.textContent = new Date().getFullYear(); });
-
+  yearEls.forEach(el => {
+    if (el) el.textContent = new Date().getFullYear();
+  });
   const lastEls = $$('#lastModified, #lastModifiedFooter, #lastModifiedServices, #lastModifiedContact, #lastModifiedSitePlan');
-  lastEls.forEach(el => { if (el) el.textContent = `Last Modified: ${document.lastModified}`; });
-}
-
-// Render features on home page using an array of objects
-function renderFeatures() {
-  const features = [
-    { id: 1, icon: '🔷', title: 'Brand identity', desc: 'Logo, colour palette and usage guidelines.' },
-    { id: 2, icon: '💻', title: 'Website design', desc: 'Fast, responsive sites tailored to your audience.' },
-    { id: 3, icon: '📣', title: 'Marketing materials', desc: 'Brochures, socials and ad creatives that convert.' }
-  ];
-
-  const container = $('#features');
-  if (!container) return;
-
-  // map -> template literals for output
-  container.innerHTML = features.map(f => {
-    return `
-      <article class="features-card" data-id="${f.id}">
-        <h3>${f.icon} ${f.title}</h3>
-        <p>${f.desc}</p>
-      </article>
-    `;
-  }).join('');
-}
-
-// Testimonials (simple slider)
-function renderTestimonials() {
-  const testimonials = [
-    { client: 'The Green Cafe', text: 'We saw a 40% lift in walk-ins after their rebrand.' },
-    { client: 'Apex Tutors', text: 'Bookings are easier now and our site loads quickly.' },
-    { client: 'Heron Clinic', text: 'Patients tell us the site feels trustworthy and clear.' }
-  ];
-
-  const container = $('#testimonials');
-  if (!container) return;
-
-  container.innerHTML = testimonials.map(t => {
-    return `
-      <div class="testimonial">
-        <p>"${t.text}"</p>
-        <p><strong>- ${t.client}</strong></p>
-      </div>
-    `;
-  }).join('');
-
-  // rotate testimonials
-  let index = 0;
-  const slides = Array.from(container.children);
-  if (!slides.length) return;
-  const show = (i) => slides.forEach((s, idx) => s.style.display = idx === i ? 'block' : 'none');
-  show(index);
-  setInterval(() => { index = (index + 1) % slides.length; show(index); }, 5000);
-}
-
-// Team render for about page
-function renderTeam() {
-  const team = [
-    { name: 'Buchi Vitalis', role: 'Founder & Lead Designer', img: 'images/team-buchi.webp' },
-    { name: 'Ada Okoro', role: 'Developer', img: 'images/team-ada.webp' },
-    { name: 'Tunde Nwosu', role: 'Project Manager', img: 'images/team-tunde.webp' }
-  ];
-
-  const container = $('#teamList');
-  if (!container) return;
-
-  container.innerHTML = team.map(m => {
-    return `
-      <div class="features-card team-member">
-        <img class="lazy" data-src="${m.img}" alt="${m.name}">
-        <h4>${m.name}</h4>
-        <p>${m.role}</p>
-      </div>
-    `;
-  }).join('');
-}
-
-// Fun fact reveal on About page
-function initFunFact() {
-  const facts = [
-    'We launched our first client site in just one week.',
-    'We rewrite brand taglines an average of 6 times until they land.',
-    'We run free brand clinics for local startups once per quarter.'
-  ];
-  const btn = $('#revealFact');
-  const out = $('#funFactText');
-  if (!btn || !out) return;
-  btn.addEventListener('click', () => {
-    const idx = Math.floor(Math.random() * facts.length);
-    out.textContent = facts[idx];
+  lastEls.forEach(el => {
+    if (el) el.textContent = `Last Modified: ${document.lastModified}`;
   });
 }
 
-// Services rendering and filtering
+// --------- Features (Home) ----------
+function renderFeatures() {
+  const features = [
+    { id: 1, icon: '🔷', title: 'Brand Identity', desc: 'Logo, colors, and brand guidelines made to last.' },
+    { id: 2, icon: '💻', title: 'Website Design', desc: 'Responsive, performant websites tailored to your business.' },
+    { id: 3, icon: '📣', title: 'Marketing Materials', desc: 'Brochures, social graphics & ad creative that convert.' }
+  ];
+  const container = $('#features');
+  if (!container) return;
+
+  container.innerHTML = features.map(f => `
+    <article class="features-card" data-id="${f.id}">
+      <h3>${f.icon} ${f.title}</h3> <!-- Add the icon here -->
+      <p>${f.desc}</p>
+    </article>
+  `).join('');
+}
+
+// --------- Testimonials (Home) ----------
+function renderTestimonials() {
+  const testimonials = [
+    { client: 'Green Cafe', quote: 'Their rebrand tripled our foot traffic.' },
+    { client: 'Apex Tutors', quote: 'Bookings increased by 50% after the site revamp.' },
+    { client: 'Heron Clinic', quote: 'Patients commented on how modern and trustworthy the site feels.' }
+  ];
+  const container = $('#testimonials');
+  if (!container) return;
+
+  container.innerHTML = testimonials.map(t => `
+    <div class="testimonial">
+      <p>"${t.quote}"</p>
+      <p><strong>- ${t.client}</strong></p>
+    </div>
+  `).join('');
+
+  let idx = 0;
+  const slides = Array.from(container.children);
+  const show = (i) => {
+    slides.forEach((s, j) => s.style.display = (j === i ? 'block' : 'none'));
+  };
+  if (slides.length) {
+    show(idx);
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      show(idx);
+    }, 5000);
+  }
+}
+
+// --------- Team Section (About) ----------
+function renderTeam() {
+  const team = [
+    { name: 'Buchi Vitalis', role: 'Lead Designer', img: 'images/team-buchi.webp' },
+    { name: 'Ada Okoro', role: 'Developer', img: 'images/team-ada.webp' },
+    { name: 'Tunde Nwosu', role: 'Project Manager', img: 'images/team-tunde.webp' }
+  ];
+  const teamSection = document.getElementById('teamList') || document.getElementById('team-section');
+  if (!teamSection) return;
+
+  teamSection.innerHTML = team.map(m => `
+    <div class="features-card team-member">
+      <img class="lazy" data-src="${m.img}" alt="${m.name}" loading="lazy">
+      <h3>${m.name}</h3>
+      <p>${m.role}</p>
+    </div>
+  `).join('');
+
+  // re-init lazy loading to observe new images
+  if (typeof initLazyLoading === 'function') {
+    initLazyLoading();
+  } else {
+    teamSection.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+      img.classList.remove('lazy');
+    });
+  }
+}
+
+// Function to format number with commas
+function formatPrice(price) {
+  return price.toLocaleString(); // Formats the price with commas (e.g., 200000 -> 200,000)
+}
+
+// --------- Services Page (filtering & quotes) ----------
 function renderServices() {
   const services = [
-    { id: 'web-starter', title: 'Starter Website', category: 'web', price: 199, desc: '3 pages, responsive, basic SEO.' },
-    { id: 'web-business', title: 'Business Website', category: 'web', price: 499, desc: 'Up to 10 pages, CMS and analytics.' },
-    { id: 'brand-core', title: 'Brand Core', category: 'graphics', price: 299, desc: 'Logo, palette and usage guide.' },
-    { id: 'brand-full', title: 'Full Brand', category: 'graphics', price: 599, desc: 'Full identity, stationery and assets.' },
-    { id: 'strategy', title: 'Digital Strategy', category: 'strategy', price: 399, desc: 'Audience research and launch plan.' }
+    { id: 'web-basic', title: 'Starter Website', category: 'web', price: 200000, desc: '3 pages, responsive, basic SEO.' },
+    { id: 'web-plus', title: 'Business Website', category: 'web', price: 500000, desc: 'Up to 10 pages, CMS, analytics.' },
+    { id: 'brand-core', title: 'Brand Core', category: 'graphics', price: 300000, desc: 'Logo, palette and usage guide.' },
+    { id: 'brand-full', title: 'Full Brand', category: 'graphics', price: 600000, desc: 'Complete identity, assets, stationery.' },
+    { id: 'strategy', title: 'Digital Strategy', category: 'strategy', price: 400000, desc: 'Audience research, launch plan.' }
   ];
-
   const container = $('#servicesList');
   if (!container) return;
 
-  const buildHtml = (list) => list.map(s => {
-    const featuresList = ['Feature 1', 'Feature 2', 'Feature 3'].map(f => `<li>${f}</li>`).join('');
-    return `
-      <article class="features-card service-card" data-id="${s.id}" data-cat="${s.category}">
-        <h3>${s.title}</h3>
-        <p><strong>From NGN ${s.price}</strong></p>
-        <p>${s.desc}</p>
-        <ul>${featuresList}</ul>
-        <button class="btn request-quote" data-id="${s.id}">Request quote</button>
-      </article>
-    `;
-  }).join('');
+  const build = (arr) => arr.map(s => `
+    <article class="features-card service-card" data-cat="${s.category}">
+      <h3>${s.title}</h3>
+      <p><strong>From NGN ${formatPrice(s.price)}</strong></p> <!-- Format price here -->
+      <p>${s.desc}</p>
+      <button class="btn request-quote" data-id="${s.id}">Request quote</button>
+    </article>
+  `).join('');
 
-  container.innerHTML = buildHtml(services);
+  container.innerHTML = build(services);
 
-  // Attach request quote listeners
-  const attachQuoteListeners = () => {
+  const attachQuote = () => {
     $$('.request-quote').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', e => {
         const id = e.currentTarget.dataset.id;
         const found = services.find(s => s.id === id);
         if (found) {
@@ -200,114 +188,145 @@ function renderServices() {
       });
     });
   };
+  attachQuote();
 
-  attachQuoteListeners();
-
-  // Filter behavior
-  $$('.filter-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      const filter = b.dataset.filter;
+  $$('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
       const filtered = filter === 'all' ? services : services.filter(s => s.category === filter);
-      container.innerHTML = buildHtml(filtered);
-      attachQuoteListeners();
+      container.innerHTML = build(filtered);
+      attachQuote();
     });
   });
 }
 
-// Contact form: store submissions in localStorage and render
+// --------- Contact Form Handling with localStorage ----------
 function initContactForm() {
   const form = $('#contactForm');
   if (!form) return;
 
-  const nameEl = $('#name');
-  const emailEl = $('#email');
-  const messageEl = $('#message');
+  const nameEl = form.querySelector('input[name="name"]');
+  const emailEl = form.querySelector('input[name="email"]');
+  const messageEl = form.querySelector('textarea[name="message"]');
   const statusEl = $('#formStatus');
   const clearBtn = $('#clearLocal');
   const submissionsList = $('#submissionsList');
 
-  // helpers
-  const load = () => JSON.parse(localStorage.getItem('submissions') || '[]');
-  const save = (arr) => localStorage.setItem('submissions', JSON.stringify(arr));
+  const loadSubmissions = () => {
+    return JSON.parse(localStorage.getItem('submissions') || '[]');
+  };
 
-  const render = () => {
-    const subs = load();
+  const saveSubmissions = (arr) => {
+    localStorage.setItem('submissions', JSON.stringify(arr));
+  };
+
+  const renderSubmissions = () => {
+    const subs = loadSubmissions();
     if (!submissionsList) return;
-    if (!subs.length) {
-      submissionsList.innerHTML = `<p>No saved submissions yet.</p>`;
-      return;
-    }
-    submissionsList.innerHTML = subs.map(s => {
-      return `
+    if (subs.length === 0) {
+      submissionsList.innerHTML = `<p>No submissions saved yet.</p>`;
+    } else {
+      submissionsList.innerHTML = subs.map(s => `
         <div class="features-card submission">
-          <p><strong>${s.name}</strong> <span>(${new Date(s.submittedAt).toLocaleString()})</span></p>
+          <p><strong>${s.name}</strong> <span>${new Date(s.submittedAt).toLocaleString()}</span></p>
           <p>${s.message}</p>
           <p><em>${s.email}</em></p>
         </div>
-      `;
-    }).join('');
+      `).join('');
+    }
   };
 
-  // load draft if present
-  const draftRaw = localStorage.getItem('contactDraft');
-  if (draftRaw) {
+  const draftJSON = localStorage.getItem('contactDraft');
+  if (draftJSON) {
     try {
-      const d = JSON.parse(draftRaw);
+      const d = JSON.parse(draftJSON);
       if (d.name) nameEl.value = d.name;
       if (d.email) emailEl.value = d.email;
       if (d.message) messageEl.value = d.message;
-      statusEl.textContent = 'Loaded saved draft from your browser.';
-    } catch (e) {
-      console.warn('Draft parse error', e);
+      if (statusEl) statusEl.textContent = 'Loaded saved draft from your browser.';
+    } catch (err) {
+      console.warn('Draft parse error:', err);
     }
   }
 
-  form.addEventListener('submit', (ev) => {
-    ev.preventDefault();
+  form.addEventListener('submit', e => {
+    e.preventDefault();
     const name = nameEl.value.trim();
     const email = emailEl.value.trim();
     const message = messageEl.value.trim();
     if (!name || !email || !message) {
-      statusEl.textContent = 'Please fill all fields.';
-      statusEl.style.color = 'crimson';
+      if (statusEl) {
+        statusEl.textContent = 'Please complete all fields before submitting.';
+        statusEl.style.color = 'crimson';
+      }
       return;
     }
-
-    const subs = load();
+    const subs = loadSubmissions();
     const entry = { id: Date.now(), name, email, message, submittedAt: new Date().toISOString() };
     subs.push(entry);
-    save(subs);
+    saveSubmissions(subs);
     localStorage.removeItem('contactDraft');
-    statusEl.style.color = '';
-    statusEl.innerHTML = `<strong>Thanks, ${name}!</strong> Message saved locally.`;
+    if (statusEl) {
+      statusEl.style.color = '';
+      statusEl.innerHTML = `<strong>Thanks, ${name}!</strong> Message saved locally.`;
+    }
     form.reset();
-    render();
+    renderSubmissions();
   });
 
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
       localStorage.removeItem('submissions');
       localStorage.removeItem('contactDraft');
-      render();
-      statusEl.textContent = 'Local submissions cleared.';
+      renderSubmissions();
+      if (statusEl) statusEl.textContent = 'Local submissions cleared.';
     });
   }
 
-  // save drafts on input
   [nameEl, emailEl, messageEl].forEach(el => {
-    el && el.addEventListener('input', () => {
-      const draft = { name: nameEl.value.trim(), email: emailEl.value.trim(), message: messageEl.value.trim(), savedAt: new Date().toISOString() };
-      localStorage.setItem('contactDraft', JSON.stringify(draft));
-    });
+    if (el) {
+      el.addEventListener('input', () => {
+        const draft = {
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim(),
+          message: messageEl.value.trim(),
+          savedAt: new Date().toISOString()
+        };
+        localStorage.setItem('contactDraft', JSON.stringify(draft));
+      });
+    }
   });
 
-  render();
+  renderSubmissions();
 }
 
-// highlight active link if it still exists
+// --------- Reveal Fact (Restored Feature) ----------
+function initRevealFact() {
+  // match either ID set: revealFactBtn/factOutput or revealFact/funFactText
+  const btn = document.getElementById('revealFactBtn') || document.getElementById('revealFact');
+  const output = document.getElementById('factOutput') || document.getElementById('funFactText');
+  if (!btn || !output) return;
+
+  const facts = [
+    'We’ve completed over 120 branding projects since 2019.',
+    'Our average client rating is 4.9 stars.',
+    'BigBrandCity started as a one-person design studio.',
+    'We serve clients in 5 different countries.'
+  ];
+
+  btn.addEventListener('click', () => {
+    const idx = Math.floor(Math.random() * facts.length);
+    output.textContent = facts[idx];
+    localStorage.setItem('lastFact', facts[idx]);
+  });
+
+  const last = localStorage.getItem('lastFact');
+  if (last) output.textContent = last;
+}
+
+// --------- Highlight the active nav link ----------
 function highlightActiveLink() {
-  const links = $$('.nav-link');
-  links.forEach(link => {
+  $$('.nav-link').forEach(link => {
     const href = link.getAttribute('href');
     if (href && location.pathname.endsWith(href)) {
       link.classList.add('active');
@@ -319,23 +338,23 @@ function highlightActiveLink() {
   });
 }
 
-// initialise app
-function initApp() {
-  initNav();
+// --------- Initialization (DOMContentLoaded) ----------
+function initSite() {
+  initNavToggleAndPrune();
   initLazyLoading();
   setFooterDates();
   renderFeatures();
   renderTestimonials();
   renderTeam();
-  initFunFact();
   renderServices();
   initContactForm();
   highlightActiveLink();
+  initRevealFact(); // restored call
 }
 
-// run init on DOM ready
+// Run initSite when ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initApp);
+  document.addEventListener('DOMContentLoaded', initSite);
 } else {
-  initApp();
+  initSite();
 }
