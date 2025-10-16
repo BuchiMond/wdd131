@@ -28,39 +28,42 @@
 
     <main>
         <form method="get" action="review.html">
-            <label>Product Name
-                <select name="product" id="productSelect" required>
-                    <option value="">Select a Product...</option>
-                </select>
-            </label>
+            <label for="productSelect">Product Name*</label>
+            <select name="product" id="productSelect" required>
+                <option value="">Select a Product...</option>
+            </select>
 
-            <div class="gap">Overall Rating</div>
+            <div class="gap">Overall Rating*</div>
             <div class="rating-group">
-                <label class="vert"><input type="radio" name="rating">★</label>
-                <label class="vert"><input type="radio" name="rating">★★</label>
-                <label class="vert"><input type="radio" name="rating">★★★</label>
-                <label class="vert"><input type="radio" name="rating">★★★★</label>
-                <label class="vert"><input type="radio" name="rating">★★★★★</label>
+                <label class="vert" for="rating1"><input type="radio" id="rating1" name="rating" value="1"
+                        required>★</label>
+                <label class="vert" for="rating2"><input type="radio" id="rating2" name="rating" value="2">★★</label>
+                <label class="vert" for="rating3"><input type="radio" id="rating3" name="rating" value="3">★★★</label>
+                <label class="vert" for="rating4"><input type="radio" id="rating4" name="rating" value="4">★★★★</label>
+                <label class="vert" for="rating5"><input type="radio" id="rating5" name="rating" value="5">★★★★★</label>
             </div>
 
-            <div class="gap">Date of Installation</div>
-            <input type="date" name="completeDate">
+            <div class="gap">Date of Installation*</div>
+            <input type="date" id="completeDate" name="completeDate" required>
 
             <div class="gap">Which feature did you find useful in the product?<br>(Check all that applies)</div>
-            <label class="vert"><input type="checkbox" name="durability">Durability</label>
-            <label class="vert"><input type="checkbox" name="ease-of-use">Ease of Use</label>
-            <label class="vert"><input type="checkbox" name="performance">Performance</label>
-            <label class="vert"><input type="checkbox" name="design">Design</label>
+            <label class="vert" for="durability"><input type="checkbox" id="durability"
+                    name="durability">Durability</label>
+            <label class="vert" for="easeOfUse"><input type="checkbox" id="easeOfUse" name="ease-of-use">Ease of
+                Use</label>
+            <label class="vert" for="performance"><input type="checkbox" id="performance"
+                    name="performance">Performance</label>
+            <label class="vert" for="design"><input type="checkbox" id="design" name="design">Design</label>
 
             <div class="gap">Written Review (Optional)</div>
-            <textarea name="written-review" rows="4" cols="40"></textarea>
+            <textarea id="writtenReview" name="written-review" rows="4" cols="40"></textarea>
 
             <div class="gap">Your Name (Optional)</div>
-            <input type="text" name="fullname">
+            <input type="text" id="fullname" name="fullname">
 
             <input type="submit" value="Post Review">
-
         </form>
+
     </main>
 
     <footer>
